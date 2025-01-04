@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pretty Plan</title>
+    <style>
+        :root {
+            --gray-50: #fafafa;
+            --slate-100: #f1f5f9;
+            --gray-100: #f3f4f6;
+            --gray-200: #e5e7eb;
+            --gray-500: #6b7280;
+            --gray-600: #4b5563;
+            --gray-700: #374151;
+            --indigo-500: #6366f1;
+            --purple-600: #8b5cf6;
+            --red-500: #ef4444;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            min-height: 100vh;
+            background: linear-gradient(45deg, #ffffff, #f8f8f8);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            overflow-x: hidden;
+        }
+
+        .particles {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        .particle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #e2e2e2;
+            border-radius: 50%;
+            animation: float 20s infinite linear;
+        }
+
+        @keyframes float {
+            0% {
+                transform: translateY(100vh) translateX(0);
+                opacity: 0;
+            }
+            50% {
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(-100vh) translateX(100px);
+                opacity: 0;
+            }
+        }
+
+        .content {
+            position: relative;
+            z-index: 1;
+            width: 100%;
+            max-width: 1200px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 2rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        .subtitle {
+            font-size: 1.4rem;
+            color: var(--gray-600);
+            margin-bottom: 0.5rem;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+        }
+
+        .title {
+            font-size: 4.5rem;
+            font-weight: bold;
+            background: linear-gradient(45deg, var(--indigo-500), var(--purple-600));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+
+        .warning {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid var(--red-500);
+            border-radius: 8px;
+            padding: 1rem;
+            margin: 2rem auto;
+            max-width: 600px;
+            text-align: center;
+            color: var(--red-500);
+            backdrop-filter: blur(5px);
+            animation: pulse 2s infinite;
+        }
+
+        .warning-icon {
+            color: var(--red-500);
+            font-size: 1.5rem;
+            margin-right: 0.5rem;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            padding: 1rem;
+            animation: fadeInUp 1s ease-out;
+        }
+
+        .major-button {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(0, 0, 0, 0.1);
+            border-radius: 1rem;
+            padding: 2.5rem;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+            text-decoration: none;
+            color: var(--gray-700);
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+        }
+
+        .major-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(45deg, transparent, rgba(99, 102, 241, 0.1), transparent);
+            transform: translateX(-100%);
+            transition: transform 0.5s;
+        }
+
+        .major-button:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            background: rgba(255, 255, 255, 0.9);
+        }
+
+        .major-button:hover::before {
+            transform: translateX(100%);
+        }
+
+        .major-icon {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            transition: transform 0.5s;
+        }
+
+        .major-button:hover .major-icon {
+            transform: scale(1.2) rotate(360deg);
+        }
+
+        .major-name {
+            font-size: 1.3rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0.4);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(239, 68, 68, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(239, 68, 68, 0);
+            }
+        }
+
+        @media (max-width: 768px) {
+            .title {
+                font-size: 3rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                padding: 1rem;
+            }
+
+            .major-button {
+                padding: 2rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 2.5rem;
+            }
+
+            .warning {
+                margin: 1rem;
+                padding: 0.75rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="particles">
+        <!-- Particles will be added by JavaScript -->
+    </div>
+
+    <div class="content">
+        <div class="header">
+            <div class="subtitle">plan better with</div>
+            <h1 class="title">Pretty Plan</h1>
+        </div>
+
+        <div class="warning">
+            <span class="warning-icon">⚠️</span>
+            For the best experience, please use a desktop computer or laptop to access the detailed planning pages.
+        </div>
+
+        <div class="grid">
+            <a href="cs-plan.html" class="major-button">
+                <div class="major-icon">💻</div>
+                <div class="major-name">Computer Science</div>
+            </a>
+            <a href="#" class="major-button">
+                <div class="major-icon">⚡</div>
+                <div class="major-name">Electrical Engineering</div>
+            </a>
+            <a href="#" class="major-button">
+                <div class="major-icon">🧪</div>
+                <div class="major-name">Chemical Engineering</div>
+            </a>
+            <a href="#" class="major-button">
+                <div class="major-icon">⚙️</div>
+                <div class="major-name">Mechanical Engineering</div>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Create floating particles
+        const particlesContainer = document.querySelector('.particles');
+        const particleCount = 50;
+
+        for (let i = 0; i < particleCount; i++) {
+            const particle = document.createElement('div');
+            particle.className = 'particle';
+            
+            // Random positioning and animation delay
+            particle.style.left = `${Math.random() * 100}%`;
+            particle.style.animationDelay = `${Math.random() * 20}s`;
+            particle.style.opacity = Math.random() * 0.5 + 0.2; // Slightly more visible particles
+            
+            particlesContainer.appendChild(particle);
+        }
+    </script>
+</body>
+</html>
