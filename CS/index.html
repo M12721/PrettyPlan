@@ -3,7 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Responsive CS Curriculum</title>
+  <title>Computer Science Study Plan</title>
+  <link rel="icon" href="favicon.ico" type="image/x-icon">
   <style>
     /* ---------------------------------------------
        BASE & COLOR VARIABLES
@@ -65,12 +66,19 @@
 
     /* TITLE: centered left side */
     .title {
-      font-size: 1.6rem;  
+      font-size: 1.6rem;
       font-weight: bold;
       background: linear-gradient(to right, var(--indigo-500), var(--purple-600));
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
+      position:relative;
+      top: 1rem;
+      right: 1rem;
+    }
+    
+    .title::after {
+      content: "Computer Science 24/25 Plan";
     }
 
     /* ---------------------------------------------
@@ -79,7 +87,7 @@
     .legend-bubble {
       /* shape & style, but no more position: fixed */
       position: absolute; /* Change from fixed to absolute */
-      top: 1rem; /* Place it relative to the parent container */
+      top: 1.6rem; /* Place it relative to the parent container */
       right: 1rem; /* Still aligned to the right */
       z-index: 50;
       
@@ -131,6 +139,7 @@
       grid-template-columns: repeat(4, minmax(0, 1fr));
       gap: 1.5rem;
       padding-bottom: 2rem; /* spacing at bottom */
+      padding-top: 2rem;
     }
     @media (max-width: 1200px) {
       .year-grid {
@@ -142,6 +151,26 @@
         grid-template-columns: 1fr;
       }
     }
+
+    @media (max-width: 800px) {
+      .title::after {
+        content: "CS 24/25 Plan";
+      }
+    }
+    
+    
+    @media (max-width: 600px) {
+      .title::after {
+        content: "CS Plan";
+      }
+    }
+    
+    @media (max-width: 510px) {
+      .title::after {
+        content: "CS";
+      }
+    }
+    
 
     /* Year block styling */
     .year-block {
@@ -160,6 +189,7 @@
       font-weight: 600;
       color: var(--gray-700);
       margin-bottom: 0.5rem;
+      text-align: center;
     }
 
     /* Terms stacked */
@@ -169,10 +199,11 @@
       gap: 0.5rem;
     }
     .term-title {
-      font-size: 0.875rem;
+      font-size: 1rem;
       font-weight: 600;
       color: var(--gray-600);
       margin-bottom: 0.25rem;
+      margin-top: 0.25rem;
     }
 
     /* course grid => 1 column per course */
@@ -239,7 +270,7 @@
 
 <!-- TOP BAR: Title (left) and Legend (right) on the same line -->
 <div class="top-bar">
-  <h1 class="title">Computer Science 24/25 Plan</h1>
+  <h1 class="title"></h1>
   <!-- Legend pill goes here (inline, not fixed) -->
   <div id="legend" class="legend-bubble hidden">
     <div id="legend-selected" class="legend-text">
@@ -819,4 +850,3 @@
 </script>
 </body>
 </html>
-
