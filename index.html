@@ -35,7 +35,7 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            justify-content: center; /* Added for vertical centering */
+            justify-content: center;
             padding: 2rem;
             overflow-x: hidden;
         }
@@ -253,7 +253,7 @@
 </head>
 <body>
     <div class="particles">
-        <!-- Particles will be added by JavaScript -->
+        
     </div>
 
     <div class="content">
@@ -281,7 +281,7 @@
     </div>
 
     <script>
-        // Create floating particles
+        
         const particlesContainer = document.querySelector('.particles');
         const particleCount = 50;
 
@@ -292,7 +292,7 @@
             // Random positioning and animation delay
             particle.style.left = `${Math.random() * 100}%`;
             particle.style.animationDelay = `${Math.random() * 20}s`;
-            particle.style.opacity = Math.random() * 0.5 + 0.2; // Slightly more visible particles
+            particle.style.opacity = Math.random() * 0.5 + 0.2; 
             
             particlesContainer.appendChild(particle);
         }
