@@ -295,40 +295,35 @@
 <div id="app"></div>
 
 <script>
-  // -----------------------------------------------------------
-  // How courses unlock each other (prerequisites and successors)
-  // -----------------------------------------------------------
   const courseRelationships = {
-    // ----------------
-    //     Year 1
-    // ----------------
+    // Year 1
     'ENGL 101': {
       prereqs: [],
-      unlocks: []
+      unlocks: ['ENGL 102']
     },
     'ENGL 102': {
-      prereqs: [],
+      prereqs: ['ENGL 101'],
       unlocks: []
     },
     'MATH 111': {
       prereqs: [],
-      unlocks: []
+      unlocks: ['MATH 112', 'PHYS 121']
     },
     'MATH 112': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['MATH 111'],
+      unlocks: ['MATH 231', 'PHYS 122', 'MATH 211', 'MATH 243']
     },
     'CHEM 115': {
       prereqs: [],
-      unlocks: []
+      unlocks: ['MEEN 225']
     },
     'PHYS 121': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['MATH 111'],
+      unlocks: ['PHYS 122', 'MEEN 240', 'MEEN 200', 'MEEN 225']
     },
     'COSC 114': {
       prereqs: [],
-      unlocks: []
+      unlocks: ['ENGR 202']
     },
     'GENS 101': {
       prereqs: [],
@@ -336,7 +331,12 @@
     },
     'GENS 100': {
       prereqs: [],
-      unlocks: []
+      unlocks: ['GENS 300']
+    },
+    },
+    'GENS 300': {
+      prereqs: ['GENS 100'],
+      unlocks: ['GENS 400']
     },
     'HUMA XXX': {
       prereqs: [],
@@ -351,35 +351,35 @@
       unlocks: []
     },
     'PHYS 122': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['PHYS 121', 'MATH 112'],
+      unlocks: ['MEEN 350']
     },
     'MATH 231': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['MATH 112'],
+      unlocks: ['MEEN 335', 'MEEN 343']
     },
-    'MEEN 211': {
-      prereqs: [],
-      unlocks: []
+    'MATH 211': {
+      prereqs: ['MATH 112'],
+      unlocks: ['MEEN 360', 'MEEN 455', 'MATH 243', 'MEEN 201']
     },
     'MEEN 200': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['PHYS 121'],
+      unlocks: ['MEEN 201', 'MEEN 325', 'MEEN 455']
     },
     'MEEN 201': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['MATH 211', 'MEEN 200'],
+      unlocks: ['MEEN 350']
     },
     'MEEN 225': {
-      prereqs: [],
+      prereqs: ['CHEM 115', 'PHYS 121'],
       unlocks: []
     },
     'MEEN 240': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['PHYS 121'],
+      unlocks: ['MEEN 335', 'MEEN 343', 'MEEN 441']
     },
     'MATH 243': {
-      prereqs: [],
+      prereqs: ['MATH 112', 'MATH 211'],
       unlocks: []
     },
     'HUMA XXX': {
@@ -387,27 +387,25 @@
       unlocks: []
     },
   
-    // ----------------
-    //     Year 3
-    // ----------------
+    // Year 3
     'COSC 202': {
-      prereqs: [],
+      prereqs: ['COSC 114'],
       unlocks: []
     },
     'MEEN 325': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['MEEN 200'],
+      unlocks: ['MEEN 387', 'MEEN 370']
     },
     'MEEN 335': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['MEEN 240', 'MATH 231'],
+      unlocks: ['MEEN 343']
     },
     'MEEN 350': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['PHYS 122', 'MATH 211', 'MEEN 201'],
+      unlocks: ['MEEN 356', 'MEEN 484', 'MEEN 497']
     },
     'MEEN 360': {
-      prereqs: [],
+      prereqs: ['MATH 211'],
       unlocks: []
     },
     'BUSS 322': {
@@ -415,20 +413,20 @@
       unlocks: []
     },
     'MEEN 370': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['MEEN 325'],
+      unlocks: ['MEEN 497']
     },
     'MEEN 343': {
-      prereqs: [],
+      prereqs: ['MATH 231', 'MEEN 335', 'MEEN 240'],
       unlocks: []
     },
     'MEEN 356': {
-      prereqs: [],
+      prereqs: ['MEEN 350'],
       unlocks: []
     },
     'MEEN 387': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['MEEN 325'],
+      unlocks: ['MEEN 497']
     },
     'MEEN 399': {
       prereqs: [],
@@ -443,23 +441,23 @@
       unlocks: []
     },
     'MEEN 455': {
-      prereqs: [],
+      prereqs: ['MEEN 200', 'MATH 211'],
       unlocks: []
     },
     'MEEN 484': {
-      prereqs: [],
+      prereqs: ['MEEN 350'],
       unlocks: []
     },
     'MEEN 441': {
-      prereqs: [],
+      prereqs: ['MEEN 240'],
       unlocks: []
     },
     'MEEN 497': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['MEEN 350', 'MEEN 370', 'MEEN 387'],
+      unlocks: ['MEEN 498']
     },
     'MEEN 498': {
-      prereqs: [],
+      prereqs: ['MEEN 497'],
       unlocks: []
     },
     'MEEN XXX': {
@@ -470,19 +468,12 @@
       prereqs: [],
       unlocks: []
     },
-    'GENS 300': {
-      prereqs: [],
-      unlocks: []
-    },
     'GENS 400': {
-      prereqs: [],
+      prereqs: ['GENS 300'],
       unlocks: []
     }
   };
-  
-  // -----------------------------------------------
-  // Full semester-by-semester layout (the curriculum)
-  // -----------------------------------------------
+
   const curriculum = {
     Freshman: {
       Fall: [
@@ -516,10 +507,10 @@
         { code: 'MEEN 225', name: 'Engineering Materials', credits: 4 },
         { code: 'MEEN 240', name: 'Thermodynamics', credits: 3 },
         { code: 'MATH 243', name: 'Probability and Statistical Inference', credits: 3 },
-        { code: 'HUMA XXX', name: 'UAE Culture', credits: 3 }
+        { code: 'HUMA XXX', name: 'UAE Culture (105/106)', credits: 3 }
       ],
       Summer: [
-        { code: 'HUMA XXX', name: 'UAE Culture Elective', credits: 3 }
+        { code: 'GENS 300', name: 'Career Preparation', credits: 3 }
       ]
     },
   
@@ -545,7 +536,7 @@
   
     Senior: {
       Fall: [
-        { code: 'BUSS XXX', name: 'Business Elective', credits: 3 },
+        { code: 'BUSS XXX', name: 'Any BUSS Elective', credits: 3 },
         { code: 'MEEN 455', name: 'Finite Element Analysis', credits: 3 },
         { code: 'MEEN 484', name: 'Mechatronics', credits: 3 },
         { code: 'MEEN 441', name: 'Applied Thermodynamics', credits: 3 },
