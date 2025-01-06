@@ -473,9 +473,9 @@
   const curriculum = {
     Freshman: {
       Fall: [
-        { code: 'GENS 101', name: 'Grand Challenges', credits: 4 },
         { code: 'ENGL 101', name: 'Academic English I', credits: 3 },
         { code: 'MATH 111', name: 'Calculus I', credits: 4 },
+        { code: 'GENS 101', name: 'Grand Challenges', credits: 4 },
         { code: 'CHEM 115', name: 'General Chemistry I', credits: 4 },
         { code: 'GENS 100', name: 'Academic Development & Success', credits: 1 }
       ],
@@ -484,11 +484,7 @@
         { code: 'MATH 112', name: 'Calculus II', credits: 4 },
         { code: 'PHYS 121', name: 'University Physics I', credits: 4 },
         { code: 'COSC 114', name: 'Introduction to Computing Using Python', credits: 4 },
-        {
-          code: 'HUMA/BUSS XXX',
-          name: 'Any HUMA/BUSS Elective',
-          credits: 3
-        }
+
       ],
       Summer: [
         {
@@ -502,14 +498,14 @@
     Sophomore: {
       Fall: [
         { code: 'COSC 101', name: 'Foundations of Computer Science', credits: 3 },
-        { code: 'COSC 230', name: 'Object-Oriented Programming', credits: 4 },
         { code: 'MATH 204', name: 'Linear Algebra', credits: 3 },
         {
           code: 'MATH 242',
           name: 'Introduction to Probability and Statistics',
           credits: 3
         },
-        { code: 'COSC 202', name: 'Data Science & AI', credits: 3 }
+        { code: 'COSC 202', name: 'Data Science & AI', credits: 3 },
+        { code: 'COSC 230', name: 'Object-Oriented Programming', credits: 4 }
       ],
       Spring: [
         {
@@ -518,19 +514,17 @@
           credits: 3
         },
         {
-          code: 'COSC 310',
-          name: 'Data Structure and Algorithms',
-          credits: 3
-        },
-  
-        { code: 'MATH 232', name: 'Engineering Mathematics', credits: 3 },
-        {
           code: 'MATH 214',
           name: 'Mathematical and Statistical Software',
           credits: 3
         },
-        { code: 'MATH 234', name: 'Discrete Mathematics', credits: 3 }
-  
+        { code: 'MATH 232', name: 'Engineering Mathematics', credits: 3 },
+        { code: 'MATH 234', name: 'Discrete Mathematics', credits: 3 },
+        {
+          code: 'COSC 310',
+          name: 'Data Structure and Algorithms',
+          credits: 3
+        }
       ],
       Summer: [
         {
@@ -619,13 +613,6 @@
   
     Senior: {
       Fall: [
-  
-        {
-          code: 'COSC 444',
-          name: 'Database Systems',
-          credits: 3
-        },
-  
         {
           code: 'COSC 497',
           name: 'Senior Design Project I',
@@ -645,12 +632,23 @@
           code: 'Technical Elective',
           name: 'Technical Elective',
           credits: 3
+        },
+        {
+          code: 'COSC 444',
+          name: 'Database Systems',
+          credits: 3
         }
+
       ],
       Spring: [
         {
           code: 'COSC 498',
           name: 'Senior Design Project II',
+          credits: 3
+        },
+        {
+          code: 'HUMA/BUSS XXX',
+          name: 'Any HUMA/BUSS Elective',
           credits: 3
         },
         {
