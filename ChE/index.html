@@ -173,6 +173,17 @@
       .legend-bubble {
         right: 0rem;
       }
+      .legend-text {
+      font-size: 0.8rem;
+      }
+      .legend-dot {
+        height: 0.5rem;
+        width: 0.5rem;
+      }
+      
+      .legend-item {
+        font-size: 0.8rem;
+      }
     }
     
 
@@ -281,11 +292,11 @@
     <div class="legend-colors">
       <div class="legend-item">
         <div class="legend-dot dot-amber"></div>
-        <span>Prerequisites</span>
+        <span>Prerequisites: <span id="prereq-count" class="legend-count">0</span></span>
       </div>
       <div class="legend-item">
         <div class="legend-dot dot-emerald"></div>
-        <span>Unlocks</span>
+        <span>Unlocks: <span id="unlock-count" class="legend-count">0</span></span>
       </div>
     </div>
   </div>
@@ -681,17 +692,29 @@
     return classes;
   }
 
-  function updateLegend() {
-    const legend = document.getElementById('legend');
-    const legendSelected = document.getElementById('legend-selected');
-    const sc = getSelectedCode();
-    if (sc) {
-      legendSelected.textContent = `Selected: ${sc}`;
-    } else {
-      legendSelected.textContent = "Hover over any course";
+    function updateLegend() {
+      const legend = document.getElementById('legend');
+      const legendSelected = document.getElementById('legend-selected');
+      const prereqCountSpan = document.getElementById('prereq-count');
+      const unlockCountSpan = document.getElementById('unlock-count');
+      const sc = getSelectedCode();
+      
+      if (sc && courseRelationships[sc]) { // Ensure the course exists in relationships
+        const prereqCount = courseRelationships[sc].prereqs.length;
+        const unlockCount = courseRelationships[sc].unlocks.length;
+        
+        legendSelected.textContent = `Selected: ${sc}`;
+        prereqCountSpan.textContent = prereqCount;
+        unlockCountSpan.textContent = unlockCount;
+      } else {
+        legendSelected.textContent = "Hover over any course";
+        prereqCountSpan.textContent = '0';
+        unlockCountSpan.textContent = '0';
+      }
+      
+      // Show the legend
+      legend.classList.remove('hidden');
     }
-    legend.classList.remove('hidden');
-  }
 
   // Initial
   renderApp();
