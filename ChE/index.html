@@ -312,31 +312,31 @@
     // ----------------
     'ENGL 101': {
       prereqs: [],
-      unlocks: []
+      unlocks: ['ENGL 102']
     },
     'ENGL 102': {
-      prereqs: [],
+      prereqs: ['ENGL 101'],
       unlocks: []
     },
     'MATH 111': {
       prereqs: [],
-      unlocks: []
+      unlocks: ['PHYS 121', 'MATH 112', 'CHEM 211']
     },
     'MATH 112': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['MATH 111'],
+      unlocks: ['MATH 211', 'MATH 231']
     },
     'CHEM 115': {
       prereqs: [],
-      unlocks: []
+      unlocks: ['CHEM 116', 'CHEM 211']
     },
     'PHYS 121': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['MATH 111'],
+      unlocks: ['CHEG 205']
     },
     'CHEM 116': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['CHEM 115'],
+      unlocks: ['CHEG 205', 'CHEG 350']
     },
     'GENS 101': {
       prereqs: [],
@@ -344,9 +344,9 @@
     },
     'GENS 100': {
       prereqs: [],
-      unlocks: []
+      unlocks: ['GENS 300']
     },
-    'HUMA 107 / 108': {
+    'HUMA XXX': {
       prereqs: [],
       unlocks: []
     },
@@ -355,40 +355,40 @@
     //     Year 2
     // ----------------
     'MATH 231': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['MATH 112'],
+      unlocks: ['CHEG 213']
     },
     'MATH 211': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['MATH 112'],
+      unlocks: ['CHEG 312']
     },
     'CHEM 211': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['CHEM 115', 'MATH 111'],
+      unlocks: ['CHEG 443']
     },
     'CHEG 205': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['CHEM 116', 'PHYS 121'],
+      unlocks: ['CHEG 230', 'CHEG 210', 'CHEG 232']
     },
     'CHEG 210': {
-      prereqs: [],
+      prereqs: ['CHEG 205'],
       unlocks: []
     },
     'CHEG 213': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['MATH 231'],
+      unlocks: ['CHEG 497']
     },
     'COSC 114': {
       prereqs: [],
-      unlocks: []
+      unlocks: ['ENGR 202']
     },
     'CHEG 230': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['CHEG 205'],
+      unlocks: ['CHEG 335', 'CHEG 332']
     },
     'CHEG 232': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['CHEG 205'],
+      unlocks: ['CHEG 335']
     },
   
     // ----------------
@@ -399,36 +399,36 @@
       unlocks: []
     },
     'CHEG 324': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['CHEG 335'],
+      unlocks: ['CHEG 485', 'CHEG 497']
     },
     'CHEG 312': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['MATH 211'],
+      unlocks: ['CHEG 412']
     },
     'CHEG 350': {
-      prereqs: [],
+      prereqs: ['CHEM 116'],
       unlocks: []
     },
     'CHEG 332': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['CHEG 230'],
+      unlocks: ['CHEG 443']
     },
     'ENGR 202': {
-      prereqs: [],
+      prereqs: ['COSC 114'],
       unlocks: []
     },
     'CHEG 335': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['CHEG 230', 'CHEG 232'],
+      unlocks: ['CHEG 324']
     },
     'CHEG XXX': {
       prereqs: [],
       unlocks: []
     },
     'GENS 300': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['GENS 100'],
+      unlocks: ['GENS 400']
     },
     'ESMA 200': {
       prereqs: [],
@@ -439,31 +439,31 @@
     //     Year 4
     // ----------------
     'CHEG 497': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['CHEG 324', 'CHEG 213'],
+      unlocks: ['CHEG 498']
     },
     'CHEG 498': {
-      prereqs: [],
+      prereqs: ['CHEG 497'],
       unlocks: []
     },
     'CHEG 485': {
-      prereqs: [],
+      prereqs: ['CHEG 324'],
       unlocks: []
     },
     'CHEG 412': {
-      prereqs: [],
+      prereqs: ['CHEG 443', 'CHEG 312'],
       unlocks: []
     },
     'CHEG 443': {
-      prereqs: [],
-      unlocks: []
+      prereqs: ['CHEG 332', 'CHEM 211'],
+      unlocks: ['CHEG 412']
     },
-    'HUMA 105 / 106': {
+    'HUMA 105/106': {
       prereqs: [],
       unlocks: []
     },
     'GENS 400': {
-      prereqs: [],
+      prereqs: ['GENS 300'],
       unlocks: []
     },
     'ENGR 399': {
@@ -471,6 +471,10 @@
       unlocks: []
     },
     'BUSS XXX': {
+      prereqs: [],
+      unlocks: []
+    },
+    'HUMA 108': {
       prereqs: [],
       unlocks: []
     }
@@ -490,49 +494,48 @@
       ],
       Spring: [
         { code: 'ENGL 102', name: 'Academic English II', credits: 3 },
+        { code: 'PHYS 121', name: 'University Physics I', credits: 4 }
         { code: 'MATH 112', name: 'Calculus II', credits: 4 },
         { code: 'CHEM 116', name: 'General Chemistry II', credits: 4 },
-        { code: 'PHYS 121', name: 'University Physics I', credits: 4 }
       ],
       Summer: [
-        // No courses listed for Year 1 Summer
       ]
     },
   
     Year2: {
       Fall: [
-        { code: 'MATH 231', name: 'Calculus IIII', credits: 3 },
-        { code: 'CHEM 211', name: 'Organic Chemistry', credits: 4 },
-        { code: 'CHEG 205', name: 'Principles of Chemical Engineering', credits: 3 },
         { code: 'COSC 114', name: 'Introduction to Computing using Python', credits: 4 },
-        { code: 'HUMA 107 / 108', name: 'Introduction to Arabic and Islamic Heritage / Arabic and Islamic Heritage', credits: 3 }
+        { code: 'HUMA 108', name: 'Arabic and Islamic Heritage', credits: 3 }
+        { code: 'MATH 231', name: 'Calculus IIII', credits: 3 },
+        { code: 'CHEG 205', name: 'Principles of Chemical Engineering', credits: 3 },
+        { code: 'CHEM 211', name: 'Organic Chemistry', credits: 4 },
       ],
       Spring: [
-        { code: 'MATH 211', name: 'Differential Equations and Linear Algebra', credits: 4 },
-        { code: 'CHEG 210', name: 'Introduction to Biochemical Engineering', credits: 3 },
-        { code: 'CHEG 213', name: 'Experimental Design', credits: 3 },
         { code: 'CHEG 230', name: 'Chemical Engineering Thermodynamics I', credits: 3 },
+        { code: 'MATH 211', name: 'Differential Equations and Linear Algebra', credits: 4 },
+        { code: 'CHEG 213', name: 'Experimental Design', credits: 3 },
+        { code: 'CHEG 210', name: 'Introduction to Biochemical Engineering', credits: 3 },
         { code: 'CHEG 232', name: 'Fluid Mechanics', credits: 4 }
       ],
       Summer: [
-        { code: 'BUSS XXX', name: 'Business Elective', credits: 3 }
+        { code: 'BUSS XXX', name: 'Any BUSS Elective', credits: 3 }
       ]
     },
   
     Year3: {
       Fall: [
+        { code: 'GENS 300', name: 'Career Preparation', credits: 1 },
         { code: 'BUSS 322', name: 'Fundamentals of Innovation & Entrepreneurship', credits: 3 },
-        { code: 'CHEG 324', name: 'Mass Transfer', credits: 3 },
         { code: 'CHEG 312', name: 'Numerical Methods for Chemical Engineers', credits: 3 },
-        { code: 'CHEG 350', name: 'Materials Science & Engineering', credits: 3 },
+        { code: 'CHEG 335', name: 'Heat Transfer', credits: 4 },
         { code: 'CHEG 332', name: 'Chemical Engineering Thermodynamics II', credits: 3 }
       ],
       Spring: [
-        { code: 'ENGR 202', name: 'Introduction to Data Science and Artificial Intelligence', credits: 3 },
-        { code: 'CHEG 335', name: 'Heat Transfer', credits: 4 },
-        { code: 'CHEG XXX', name: 'Technical Elective', credits: 3 },
-        { code: 'GENS 300', name: 'Career Preparation', credits: 1 },
+        { code: 'ENGR 202', name: 'Data Science & Artificial Intelligence', credits: 3 },
         { code: 'ESMA 200', name: 'Engineering Economic Analysis', credits: 3 }
+        { code: 'CHEG 350', name: 'Materials Science & Engineering', credits: 3 },
+        { code: 'CHEG 324', name: 'Mass Transfer', credits: 3 },
+        { code: 'CHEG XXX', name: 'Technical Elective', credits: 3 },
       ],
       Summer: [
         { code: 'ENGR 399', name: 'Engineering Internship', credits: 1 }
@@ -541,18 +544,19 @@
   
     Year4: {
       Fall: [
-        { code: 'CHEG 497', name: 'Senior Design Project I', credits: 3 },
-        { code: 'CHEG 485', name: 'Separation Processes', credits: 4 },
-        { code: 'CHEG 443', name: 'Reaction Engineering', credits: 4 },
-        { code: 'CHEG XXX', name: 'Technical Elective', credits: 3 },
         { code: 'GENS 400', name: 'Enhancing Employability & Job Readiness', credits: 1 }
+        { code: 'CHEG XXX', name: 'Technical Elective', credits: 3 },
+        { code: 'CHEG 485', name: 'Separation Processes', credits: 4 },
+        { code: 'CHEG 497', name: 'Senior Design Project I', credits: 3 },
+        { code: 'CHEG 443', name: 'Reaction Engineering', credits: 4 }, 
       ],
       Spring: [
-        { code: 'CHEG 498', name: 'Senior Design Project II', credits: 3 },
-        { code: 'CHEG 412', name: 'Process Dynamics and Control', credits: 4 },
-        { code: 'HUMA 105 / 106', name: 'Emirates Society / Emirates Studies', credits: 3 },
+        { code: 'HUMA 105/106', name: 'UAE Studies', credits: 3 },
         { code: 'CHEG XXX', name: 'Technical Elective', credits: 3 },
         { code: 'CHEG XXX', name: 'Technical Elective', credits: 3 }
+        { code: 'CHEG 498', name: 'Senior Design Project II', credits: 3 },
+        { code: 'CHEG 412', name: 'Process Dynamics and Control', credits: 4 },
+
       ],
       Summer: [
         { code: 'ENGR 399', name: 'Engineering Internship', credits: 1 }
